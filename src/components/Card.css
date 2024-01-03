@@ -20,10 +20,10 @@ font-weight: 700;
     gap: 12px;
     transition: 2s;
 }
-.movieCard:hover{
+/* .movieCard:hover{
     animation: movieAnimation 2s;
     cursor: pointer;
-}
+} */
 
 @keyframes movieAnimation {
     from{
