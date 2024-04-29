@@ -1,14 +1,14 @@
 import "./MovieContent.css";
+import NavBar from "./NavBar.jsx";
 import SideBar from "./SideBar.jsx";
 import React, { useEffect, useState } from 'react';
 
 function MovieContent({info,id}) {
     console.log(info);
-    const releaseDate = info && info.release_date ? new Date(info.release_date) : null;
-  const utcReleaseDate = releaseDate ? releaseDate.toISOString() : null;
+  
 
     const [movieDetails, setMovieDetails] = useState([]);
-    const [error,setError]=useState(null)
+    const [error,setError]=useState(null);
     
     useEffect(() => {
  
@@ -16,6 +16,7 @@ function MovieContent({info,id}) {
           .then((response) => response.json())
           .then((data) => setMovieDetails(data))
           .catch((error) => setError(error.message));
+          console.log(movieDetails)
       }, [id]);
 
       const director = movieDetails.crew ? movieDetails.crew.filter((member) => member.job === 'Director') : [];
@@ -26,33 +27,40 @@ function MovieContent({info,id}) {
   let image_path="https://image.tmdb.org/t/p/w500";
 
   return(
+    <>
+    <NavBar/>
     <div className="movie-content">
       <div className="movie2" style={{ position: "relative" }}>
-        <img src={image_path+info.poster_path} alt="" width={1000} height={310}/>
-        <div className="trailer">
-          <img src="/Icons/play.png" alt="" width={50} />
-          <p>Watch Trailer</p>
-        </div>
+        <img src={image_path+info.poster_path} alt=""/>
       </div>
-
+      <div >
       <div className="movieInfo">
-        <div className="left">
+        <iframe src=""/>
+        <div className="container2">
           <p className="movieTitle" data-testid="movie-title">
             {info.title}
           </p>
-          <p className="releaseDate" data-testid="movie-release-date">
-            {utcReleaseDate}
+          {/* <div className={styles.genres}></div> */}
+          <div className="extraInfo">
+            <div className="left">
+            <p className="releaseDate" data-testid="movie-release-date">
+            {info.release_date}
           </p>
           <p className="runTime" data-testid="movie-runtime">
-            {info.runtime}
+            {info.runtime} mins
           </p>
-        </div>
-
-        <div className="rating">
+            </div>
+          
+          <div className="rating">
           <img src="/Icons/Star.png" alt="" />
         <p className="rating">{info.vote_average} </p>
-          <p className="ratingCount">{info.vote_count}</p>
+          <p className="ratingCount"> 10</p>
         </div>
+          </div>
+          
+        </div>
+
+        
       </div>
 
       <div className="overviewSection">
@@ -76,10 +84,10 @@ function MovieContent({info,id}) {
       <div className="movieDetails">
         <div className="cast">
           <p>
-            Director:<span className="castName">{error?<span>error</span>:director.map((d) => d.name).join(', ')}</span>
+            Director: <span className="castName">{error?<span>error</span>:director.map((d) => d.name).join(', ')}</span>
           </p>
           <p>
-            Writers:<span className="castName">{error?<span>error</span>:writer.map((w) => w.name).join(', ')}</span>
+            Writers: <span className="castName">{error?<span>error</span>:writer.map((w) => w.name).join(', ')}</span>
           </p>
           <p>
             Stars: <span className="castName">{error?<span>error</span>:filterdActor.map((actor) => actor.name).join(', ')}</span>
@@ -87,7 +95,10 @@ function MovieContent({info,id}) {
         </div>
 
       </div>
-    </div>
+
+      </div>
+          </div>
+          </>
   );
   
 }

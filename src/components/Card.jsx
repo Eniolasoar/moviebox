@@ -1,5 +1,5 @@
 import React, { useState } from 'react'; 
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './Card.css'
 
 function Card(movie){
@@ -12,15 +12,15 @@ function Card(movie){
   const handleClick = () => {
     setBackgroundColor('red');
   };
-      const history = useHistory();
+     const navigate=useNavigate();
 const cardId=movie.info.id;
   const goToMovie = () => {
-    history.push(`/movies/${cardId}`);
+    navigate(`/movies/${cardId}`);
   };
    
     return(           
         
-        
+        movie.key===12?console.log(movie):
                 <div className="movieCard" data-testid="movie-card" onClick={goToMovie}>
                     <div className="poster">
                         <img src={image_path+movie.info.poster_path} alt="" width="250" height="370" data-testid="movie-poster"/>

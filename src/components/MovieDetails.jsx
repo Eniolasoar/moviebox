@@ -22,7 +22,7 @@ function MovieDetails(){
           ) : (
             
             <>
-              <SideBar />
+              
               {movieDetails && <MovieContent info={movieDetails} id={id}/>}
               
             </>

@@ -11,7 +11,7 @@ function NavBar(){
                 <img src="/Icons/search.png" alt=""/>
             </div>
             <div className="nav-right">
-                <p className="signIn">Sign in</p>
+           
                 <div className="menu">
                     <img src="/Icons/Menu alt 4.svg" alt="" />
                 </div>

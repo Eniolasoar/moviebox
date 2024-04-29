@@ -5,16 +5,37 @@
   box-sizing: border-box;
   font-family: "Poppins";
 }
+.container{
+  display:flex;
+  flex-direction:column !important;
+  justify-content:center;
+  align-items:center;
+}
+nav{
+  width: 100% !important;
+  gap:30px !important;
+}
+.nav-left p{
+  color: black !important;
+}
+input::placeholder{
+  color: black !important;
+}
 .movie-content {
 
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  padding: 10px;
+  gap: 50px;
+  width: 90%;
+  min-height: 100vh;
 }
 
 .movie2 img:nth-child(1) {
   max-width: 100%;
+  object-fit: contain;
+  height:80vh;
+  width: 1000px;
 }
 .trailer {
 
@@ -36,20 +57,43 @@
 }
 .movieInfo {
   display: flex;
+  flex-direction: column;
   width: 100%;
+  justify-content: space-between;
+  align-items: start;
+}
+iframe{
+  width: 100%;
+  height: 350px;
+  margin-bottom: 40px;
+  border: 1px solid gray;
+}
+
+.container2{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+.releaseDate,.runTime{
+    color: #404040 !important;
+    font-size: 15px !important;
+
+}
+.extraInfo{
+  width: 100%;
+  display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.left {
-
+.left{
   display: flex;
-  gap: 20px;
-  margin: 10px 0;
+  gap: 60px;
 }
-.movieTitle,.releaseDate,.runTime{
-    color: #404040;
-    font-size: 19px;
-    font-weight: 700;
+.movieTitle{
+  font-size: 4rem;
+  color: black;
+  width: 100%;
 }
 .rating {
   display: flex;
@@ -75,12 +119,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 30px;
 }
 .overview {
   width: 76%;
   color: #333;
   font-size: 20px;
-
+text-align: justify;
   font-weight: 400;
 }
 .buttons {
@@ -119,11 +164,15 @@
   color: #333;
   font-size: 20px;
   font-weight: 400;
+  text-decoration: none;
+}
+.cast p{
+  font-weight: bold;
 }
 .castName {
-  color: #be123c;
   font-size: 20px;
   font-weight: 400;
+  text-decoration: none !important;
 }
 
 @media screen  and (max-width:600px){
@@ -137,4 +186,31 @@
     justify-content: center;
    
   }
+  .overviewSection{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+  }
+}
+@media screen and (max-width:1000px) {
+  .overviewSection{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:start;
+  }
+  .buttons{
+    width: 100%;
+ 
+  }
+  button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  input{
+    width: 50%;
+  }
+  
 }

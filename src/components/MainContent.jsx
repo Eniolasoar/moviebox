@@ -56,6 +56,7 @@ function MainContent(){
          <p style={{ textAlign: "center" }}><i>"No movies found"</i></p>
          ) : (
          movieData.slice(0,movieNo).map((result, index) => (
+          
              <Card info={result} key={index} />
          ))
          ))

@@ -27,9 +27,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   color: white;
-  position: sticky;
-  top: 5px;
-  z-index: 100;
+
 }
 .nav-left {
   display: inline-flex;

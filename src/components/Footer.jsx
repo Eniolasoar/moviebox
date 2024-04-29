@@ -18,7 +18,7 @@ function Footer(){
 
             <p className="copyright">
                 
-                © 2023 MovieBox by Eniola Anishe Olumide.
+                © 2023 MovieBox by EniDev
             </p>
         </footer>
     )
