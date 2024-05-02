@@ -36,11 +36,11 @@ font-weight: 700;
 }
 
 .movieTitle{
-    color: var(--gray-900, #111827);
+    color: var(--gray-900, #111827) !important;
 
-font-size: 18px;
-font-style: normal;
-font-weight: 700;
+font-size: 18px !important;
+font-style: normal !important;
+font-weight: 700 !important;
 }
 .imdb,.rottenTomatoes{
     color: var(--gray-900, #111827);
