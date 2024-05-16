@@ -41,7 +41,7 @@ function MainContent(){
     return(
         <div className="mainContent">
             <div className="movieHeading">
-                <h2>Featured Movie</h2>
+                <h2>Top Rated Movies</h2>
                 
             </div>
             {loading=="true"?<div className="loaderModal">

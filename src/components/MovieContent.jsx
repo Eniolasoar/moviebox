@@ -3,11 +3,9 @@ import NavBar from "./NavBar.jsx";
 import SideBar from "./SideBar.jsx";
 import Footer from "./Footer.jsx";
 import React, { useEffect, useState } from 'react';
+import MovieRecommendation from "./MovieRecommendation.jsx";
 
 function MovieContent({info,id}) {
-    console.log(info);
-  
-
     const [movieDetails, setMovieDetails] = useState([]);
     const [error,setError]=useState(null);
 
@@ -15,6 +13,17 @@ function MovieContent({info,id}) {
     const [videoError,setVideoError]=useState(null);
 
     const videoTrailer=videos.results?videos.results[0].key:"";
+
+    const [genreList,setGenreList]=useState([]);
+ 
+  
+
+  useEffect(()=>{
+    const genres=info.genres.map(genre=>genre.name);
+    setGenreList(genres);
+  },[info])
+
+
     
     useEffect(() => {
  
@@ -22,7 +31,7 @@ function MovieContent({info,id}) {
           .then((response) => response.json())
           .then((data) => setMovieDetails(data))
           .catch((error) => setError(error.message));
-          console.log(movieDetails);
+         
       }, [id]);
 useEffect(() => {
 
@@ -31,8 +40,7 @@ useEffect(() => {
     .then((data) => setVideo(data))
     
     .catch((error) => setVideoError(error.message));
-    console.log("VIDEO");
-    console.log(videos);
+
 },[id]);
       const director = movieDetails.crew ? movieDetails.crew.filter((member) => member.job === 'Director') : [];
   const writer = movieDetails.crew ? movieDetails.crew.filter((member) => member.department === 'Writing') : [];
@@ -47,6 +55,8 @@ useEffect(() => {
 
 
   let image_path="https://image.tmdb.org/t/p/w500";
+
+
 
   return(
     <>
@@ -63,10 +73,13 @@ useEffect(() => {
             {info.title}
           </p>
           <div className="genres">
-            {info.genres.map(genre=>{
+            {genreList.map(genre=>{
+            
               return(
+                
                 <div className="genre">
-                <span>{genre.name}</span>
+                <span>{genre}</span>
+        
               </div>
               )
               
@@ -113,7 +126,14 @@ useEffect(() => {
           
         </div>
       </div>
+      
+      <div className="movieRecommendations">
+        <p>More Like This</p>
+        <div className="movieList">
+        <MovieRecommendation genreList={genreList} key=""/>
+        </div>
         
+      </div>
       </div>
       </div>
 
