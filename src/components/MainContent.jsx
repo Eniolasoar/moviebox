@@ -5,12 +5,18 @@ import "./Loader.css";
 
 let API_KEY='d6c287e55b74adf5812bec5fad23e8b0';
 let url='https://api.themoviedb.org/3/movie/top_rated?api_key='+API_KEY;
+let url2='https://api.themoviedb.org/3/movie/upcoming?api_key='+API_KEY;
 function MainContent(){
-    const[movieData,setData]=useState([]);
     const [urlset,setUrl]=useState(url);
+    const [urlset2,setUrl2]=useState(url2);
+    const[movieData,setData]=useState([]);
+    const[movieData2,setData2]=useState([]);
     const [error, setError] = useState(null);
+    const [error2, setError2] = useState(null);
     const [movieNo,setMovieNo]=useState(12);
     const [loading,setLoading]=useState("true");
+    const [movieNo2,setMovieNo2]=useState(12);
+    const [loading2,setLoading2]=useState("true");
 
 
     const myStyle={
@@ -35,8 +41,15 @@ function MainContent(){
         event.preventDefault();
         setMovieNo((movieNo)=>movieNo+4)
     }
+    useEffect(()=>{
+        fetch(url2)
+        .then(response=>response.json())
+        .then(data=>setData2(data.results))
+        .then(data=>setLoading2("false"))
+        .catch(error=>setError2(error.message))
+    },[urlset2])
 
-
+    
     
     return(
         <div className="mainContent">
@@ -63,11 +76,41 @@ function MainContent(){
      }
         </div>
         
-    
+        
         
     }
     {movieNo!==20?<div className="links">
         <button onClick={(e)=>loadMovies(e)}>Load More Movies</button>
+         </div>:null}
+      <div className="movieHeading">
+                <h2>UpComing Movies</h2>
+                
+            </div>
+
+            {loading=="true"?<div className="loaderModal">
+            <div className="spinner-3"></div>
+        </div>:
+        <div className="movieList">
+        {error ? (
+     <p style={myStyle}>{error+" movies from database. Reload Page"}</p>
+   ) : 
+        
+        (movieData2.length === 0 ? (
+         <p style={{ textAlign: "center" }}><i>"No movies found"</i></p>
+         ) : (
+         movieData2.slice(0,movieNo2).map((result, index) => (
+          
+             <Card info={result} key={index} />
+         ))
+         ))
+     }
+        </div>
+        
+    
+        
+    }
+    {movieNo2!==20?<div className="links">
+        <button onClick={(e)=>loadMovies2(e)}>Load More Movies</button>
          </div>:null}
            
         </div>
