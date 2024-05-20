@@ -60,7 +60,7 @@ margin: 0 auto;
 @media screen and (min-width:600px)and (max-width:992px){
     .movieList {
         display: grid;
-      grid-template-columns: 250px 250px 250px;
+      grid-template-columns: 250px auto auto auto;
       gap: 40px;
       justify-content: center;
     }

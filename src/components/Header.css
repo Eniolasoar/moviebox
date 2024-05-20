@@ -211,6 +211,9 @@ button:hover {
 }
 
 @media screen and (max-width:600px) {
+  .cover{
+    opacity: 1;
+  }
   input::placeholder{
     text-align: center;
   }

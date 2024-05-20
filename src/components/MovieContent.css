@@ -5,6 +5,12 @@
   box-sizing: border-box;
   font-family: "Poppins";
 }
+.movieRecommendations p{
+  font-size: 30px;
+  font-weight: 700;
+  margin-top: 30px;
+
+}
 .container{
   display:flex;
   flex-direction:column !important;
@@ -35,6 +41,10 @@ nav{
   object-fit: contain;
   height:80vh;
   width: 1000px;
+  display: none;
+}
+iframe{
+  height: 600px !important;
 }
 .trailer {
 
