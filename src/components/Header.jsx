@@ -83,7 +83,7 @@ const navigate=useNavigate();
         <>
             <section className="header">
                
-               {filteredMovieData.slice(6,11).map((movie,index)=>{
+               {filteredMovieData.slice(10,20).map((movie,index)=>{
                 const firstTwoSentences = getFirstTwoSentences(movie.overview);
 
                 return(
@@ -102,7 +102,8 @@ const navigate=useNavigate();
                          </div>
                          <div className="rottenTomatoes2">
                              <img src="/Icons/tomato.png" alt="" />
-                             {movie.vote_average * 10}%
+                             {Math.round(movie.vote_average * 10)}%
+                             
                          </div>
                      </div>
                      <p className="paragraph"> {firstTwoSentences.join(' ')}</p>
@@ -110,7 +111,7 @@ const navigate=useNavigate();
                      <button onClick={()=>goToMovie(movie.id)}>
                          <img src="/Icons/play.png" alt=""/>
 
-                         <p>WATCH TRAILER</p>
+                         <p>FULL DETAILS</p>
                      </button>
                  </div>
 
@@ -120,6 +121,11 @@ const navigate=useNavigate();
                 </div>
  
                  <NavBar/>
+                 <button onClick={()=>goToMovie(movie.id)}>
+                         <img src="/Icons/play.png" alt=""/>
+
+                         <p>FULL DETAILS</p>
+                     </button>
                 </div>
 )})}
 

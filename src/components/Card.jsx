@@ -5,7 +5,7 @@ import './Card.css'
 function Card(movie){
     let image_path="https://image.tmdb.org/t/p/w500";
     let rating=movie.info.vote_average;
-    let rottenTomatoes=rating * 10;
+    let rottenTomatoes=Math.round(rating * 10);
     
     const [heartColor, setBackgroundColor] = useState('#9CA3AF');
 

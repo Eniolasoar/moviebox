@@ -16,8 +16,8 @@
   max-width: 100%;
 }
 nav{
-  width: 100% !important;
-  gap:30px !important;
+  width: 100% ;
+  gap:30px ;
 }
 
 .movie-content {

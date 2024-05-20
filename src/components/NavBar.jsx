@@ -8,7 +8,7 @@ function NavBar(){
     return(
         <nav>
             <div className="nav-left">
-                <img src="/Icons/tv.png" alt="" className="logo" onClick={home}/>
+                <img src="/Icons/tv.png" alt="" className="logo" onClick={home} width={50}/>
                 <p>MovieBox</p>
             </div>
             <div className="input-container">
