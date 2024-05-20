@@ -121,7 +121,7 @@ const navigate=useNavigate();
                 </div>
  
                  <NavBar/>
-                 <button onClick={()=>goToMovie(movie.id)}>
+                 <button onClick={()=>goToMovie(movie.id)} className='mobileBtn'>
                          <img src="/Icons/play.png" alt=""/>
 
                          <p>FULL DETAILS</p>

@@ -10,11 +10,7 @@ function Footer(){
                 <img src="/Icons/youtube.svg" alt="" />
             </div>
 
-            <div className="extraInfo">
-                <p>Conditions of Use</p>
-                <p>Privacy&Policy</p>
-                <p>Press Room</p>
-            </div>
+           
 
             <p className="copyright">
                 

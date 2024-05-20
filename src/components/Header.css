@@ -146,8 +146,11 @@ input {
   font-size: 25px;
   font-style: normal;
   font-weight: 500;
-  line-height: 20px;
+  line-height: 30px;
 
+}
+.mobileBtn{
+  display: none;
 }
 button {
   display: flex;
@@ -244,9 +247,28 @@ bottom: 0px;
     grid-template-columns: 90%; /* 1fr means one fraction of the available width */
     gap: 40px;
     justify-content: center; 
-}}
+
+}
+.mobileBtn{
+  display: block;
+}
+}
 
 
-@media screen and (min-width: 600px) and (max-width: 900px) {
-  /* Your styles for screens between 600px and 900px width */
+@media screen and (min-width: 600px) and (max-width: 1000px) {
+ .paragraph{
+  max-height: 80vh;
+  font-size: 20px;
+ }
+ .text{
+  min-width: 470px;
+ }
+ .text h1{
+  font-size: 40px;
+  line-height: 50px;
+ }
+.slideInfo{
+  width: 100% !important;
+  padding: 10px;
+}
 }
