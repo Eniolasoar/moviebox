@@ -5,6 +5,14 @@
   box-sizing: border-box;
   font-family: "Poppins";
 }
+.movieList2 {
+  width: 100%;
+  display: grid;
+grid-template-columns: 250px auto auto auto ;
+gap: 40px;
+justify-content: space-between;
+
+}
 .movieRecommendations p{
   font-size: 30px;
   font-weight: 700;
@@ -27,13 +35,14 @@ nav{
 }
 
 .movie-content {
-
+margin-top: 110px;
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 50px;
   width: 90%;
   min-height: 100vh;
+  padding-right: 30px;
 }
 
 .movie2 img:nth-child(1) {
@@ -250,7 +259,19 @@ text-align: justify;
   font-weight: bold;
   text-align: center;
 }
+.movieRecommendations{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 30px;
+  margin-top: 40px;
+}
 @media screen  and (max-width:600px){
+  .extraInfo p{
+    font-size: 13px !important;
+  }
 .overview{
   width:100%;
 }

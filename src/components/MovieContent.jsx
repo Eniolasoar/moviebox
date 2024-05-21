@@ -129,7 +129,7 @@ useEffect(() => {
       
       <div className="movieRecommendations">
         <p>More Like This</p>
-        <div className="movieList">
+        <div className="movieList2">
         <MovieRecommendation genreList={genreList} key=""/>
         </div>
         

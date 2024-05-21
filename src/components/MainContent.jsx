@@ -41,6 +41,10 @@ function MainContent(){
         event.preventDefault();
         setMovieNo((movieNo)=>movieNo+4)
     }
+    const loadMovies2=(event)=>{
+        event.preventDefault();
+        setMovieNo2((movieNo2)=>movieNo2+4)
+    }
     useEffect(()=>{
         fetch(url2)
         .then(response=>response.json())
@@ -53,8 +57,10 @@ function MainContent(){
     
     return(
         <div className="mainContent">
+            <div className="movieContainer">
+
             <div className="movieHeading">
-                <h2>Top Rated Movies</h2>
+                <h2>Top Rated <span className="siteColor">| Movies</span></h2>
                 
             </div>
             {loading=="true"?<div className="loaderModal">
@@ -83,10 +89,13 @@ function MainContent(){
         <button onClick={(e)=>loadMovies(e)}>Load More Movies</button>
          </div>:null}
       <div className="movieHeading">
-                <h2>UpComing Movies</h2>
+                <h2>Upcoming <span className="siteColor"> | Movies</span></h2>
                 
             </div>
 
+
+            </div>
+            
             {loading=="true"?<div className="loaderModal">
             <div className="spinner-3"></div>
         </div>:

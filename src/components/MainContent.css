@@ -6,7 +6,6 @@
     font-family: "DM Sans";
 }
 h2{
-    margin-left: 10px;
     color: #000;
 
 font-size: 36px;
@@ -19,7 +18,6 @@ font-weight: 700;
     text-align: left;
     margin-top: 40px;
 margin-bottom: 44px;
-padding-left: 30px;
 }
 .links{
     margin-top: 100px;
@@ -45,6 +43,9 @@ margin: 0 auto;
   justify-content: center;
   
 }
+.siteColor{
+    color: #be123c;
+}
 @media screen and (max-width:600px){
     .movieList {
         display: grid;
@@ -57,10 +58,10 @@ margin: 0 auto;
         width:300px;
     }
 }
-@media screen and (min-width:600px)and (max-width:992px){
+@media screen and (min-width:600px) and (max-width:1024px){
     .movieList {
         display: grid;
-      grid-template-columns: 250px auto auto auto;
+      grid-template-columns: 250px auto auto auto !important;
       gap: 40px;
       justify-content: center;
     }

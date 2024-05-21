@@ -26,6 +26,7 @@ font-weight: 700;
     
 }
 
+
 @keyframes movieAnimation {
     from{
         transform: translateY(0);
@@ -76,5 +77,28 @@ font-weight: 700;
 }
 .heart:hover{
     cursor:pointer;
+}
+@media screen and (max-width:600px){
+    .movieList2 {
+        display: grid !important;
+        grid-template-columns: 400px !important;
+        gap: 40px !important;
+justify-content: center !important;
+        margin-top: 0.625rem;
+    }
+    .poster img:nth-child(1){
+        width:400px !important;
+    }
+    .movieRecommendations p{
+        margin-top: 0px !important;
+    }
+}
+@media screen and (min-width:600px)and (max-width:992px){
+    .movieList2 {
+        display: grid;
+      grid-template-columns: 250px auto auto auto;
+      gap: 40px;
+      justify-content: center;
+    }
 }
 

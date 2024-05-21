@@ -106,7 +106,7 @@ const [error2, setError2] = useState([]);
         <div className="movieCard" data-testid="movie-card" onClick={()=>goToMovie(movie.id)}>
                     <div className="poster">
                         <img src={image_path+movie.poster_path} alt="" width="250" height="370" data-testid="movie-poster"/>
-                        <img src="Icons/heart.svg" alt="" className="heart" onClick={handleClick} style={{backgroundColor:heartColor}}/>
+                        <img src="/Icons/heart.svg" alt="" className="heart" onClick={handleClick} style={{backgroundColor:heartColor}}/>
                     </div>
                     
                     <p className="releaseDate" data-testid="movie-release-date">{movie.release_date}</p>
@@ -118,7 +118,7 @@ const [error2, setError2] = useState([]);
                         </div>
                         <div className="rottenTomatoes">
                             <img src="/Icons/tomato.png" alt="" />
-                            {movie.vote_average * 10}%
+                            {Math.round(movie.vote_average * 10)}%
                         </div>
                     </div>
                 </div>
