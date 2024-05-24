@@ -54,7 +54,13 @@ const [error2, setError2] = useState([]);
       }, [genreList]);
    
       
-
+      useEffect(()=>{
+      
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth" // Optional: smooth scroll animation
+      });
+      })
 
       // const filteredGenres = genreInfo.filter(genre => {
       //   const movieGenres = genre.name;
@@ -89,6 +95,7 @@ const [error2, setError2] = useState([]);
 
 // const cardId=movie.info.id;
   const goToMovie = (cardId) => {
+  
     navigate(`/movies/${cardId}`);
   };
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Header from './components/Header.jsx';
+import NavBar from './components/NavBar.jsx';
 import MainContent from "./components/MainContent.jsx";
 import './index.css';
 import Footer from './components/Footer.jsx';
@@ -12,6 +13,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 const HomeLayout = () => (
   <>
     <Layout>
+    <NavBar/>
+
       <MainContent />
       <Footer />
     </Layout>

@@ -38,7 +38,7 @@ margin: 0 auto;
 }
 .movieList {
     display: grid;
-  grid-template-columns: 250px auto auto auto ;
+  grid-template-columns: 350px auto auto auto ;
   gap: 40px;
   justify-content: center;
   
@@ -49,20 +49,20 @@ margin: 0 auto;
 @media screen and (max-width:600px){
     .movieList {
         display: grid;
-        grid-template-columns: 300px;
+        grid-template-columns: 350px;
         gap: 40px;
 
         margin-top: 0.625rem;
     }
     .poster img:nth-child(1){
-        width:300px;
+        width:350px;
     }
 }
 @media screen and (min-width:600px) and (max-width:1024px){
     .movieList {
         display: grid;
-      grid-template-columns: 250px auto auto auto !important;
-      gap: 40px;
+      grid-template-columns: 250px auto auto !important;
+      gap: 30px;
       justify-content: center;
     }
 }

@@ -12,7 +12,8 @@ function MovieContent({info,id}) {
     const [videos,setVideo]=useState([]);
     const [videoError,setVideoError]=useState(null);
 
-    const videoTrailer=videos.results?videos.results[0].key:"";
+    const videoTrailer = videos.results?.[0] || {}; // Using optional chaining and nullish coalescing
+    const videosUrl = videoTrailer.key || "";
 
     const [genreList,setGenreList]=useState([]);
  
@@ -67,7 +68,9 @@ useEffect(() => {
       </div>
       <div className="movieContainer">
       <div className="movieInfo">
-        <iframe src={`https://youtube.com/embed/${videoTrailer}`}></iframe>
+        {videosUrl===""?         <img src={image_path+info.poster_path} alt="" style={{ maxWidth:"100%",marginBottom:"20px" }}/>
+ :         <iframe src={`https://youtube.com/embed/${videosUrl}`}></iframe>
+ }
         <div className="container2">
           <p className="movieTitle2" data-testid="movie-title">
             {info.title}

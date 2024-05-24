@@ -15,7 +15,6 @@ font-style: normal;
 font-weight: 700;
 }
 .movieCard{
-    max-width:250px;
     display: grid;
     gap: 12px;
     transition: 2s;
@@ -81,24 +80,34 @@ font-weight: 700;
 @media screen and (max-width:600px){
     .movieList2 {
         display: grid !important;
-        grid-template-columns: 400px !important;
+        grid-template-columns: 350px !important;
         gap: 40px !important;
 justify-content: center !important;
         margin-top: 0.625rem;
     }
-    .poster img:nth-child(1){
-        width:400px !important;
-    }
+    
     .movieRecommendations p{
         margin-top: 0px !important;
     }
 }
 @media screen and (min-width:600px)and (max-width:992px){
     .movieList2 {
-        display: grid;
-      grid-template-columns: 250px auto auto auto;
-      gap: 40px;
-      justify-content: center;
+        display: grid !important;
+      grid-template-columns: 350px auto  !important;
+      gap: 40px !important;
+      justify-content: center !important;
+    }
+    .movieList2 .poster img:nth-child(1){
+        width: 350px !important;
+    }
+    .movieContent{
+        width: 100% !important; 
+    }
+    .movieRecommendations p{
+        margin-top: 0px !important;
+    }
+    .movieCard{
+        max-width: 350px !important;
     }
 }
 

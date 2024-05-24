@@ -31,6 +31,7 @@ html{
  
 }
 .movieContainer{
+  margin-top: 40px;
   display:flex;
   flex-direction:column;
   justify-content:center;
@@ -188,6 +189,11 @@ button:hover {
 }
 .mySlides {
   display: none;
+  max-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  padding: 0; /* Make sure there's no padding */
+  margin: 0;
 }
 
 .slideInfo{
@@ -262,10 +268,10 @@ bottom: 0px;
     margin-top:10px;
   }
 .movieList{
-    display: grid;
-    grid-template-columns: 90%; /* 1fr means one fraction of the available width */
-    gap: 40px;
-    justify-content: center; 
+   display:flex;
+   flex-direction:column;
+   justify-content:center;
+   align-items:center;
 
 }
 .mobileBtn{
@@ -275,6 +281,29 @@ bottom: 0px;
 
 
 @media screen and (min-width: 600px) and (max-width: 1000px) {
+  .header button{
+    width: 60% !important;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position: absolute;
+bottom: 0px;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+  .cover{
+    opacity: 1;
+    object-fit:contain;
+  }
+  .posterImage{
+    display: none;
+  }
+  .text {
+    display: none;
+  }
+  .mobileBtn{
+    display: block;
+  }
  .paragraph{
   max-height: 80vh;
   font-size: 20px;
