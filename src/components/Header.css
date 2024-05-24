@@ -25,7 +25,7 @@ html{
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 100vh;
+  max-height: 100vh;
   position: relative;
   opacity: 0.7;
  

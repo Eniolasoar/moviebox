@@ -8,10 +8,15 @@
 .movieList2 {
   width: 100%;
   display: grid;
-grid-template-columns: 350px auto auto auto ;
+grid-template-columns: 250px auto auto auto ;
+flex-wrap: wrap;
 gap: 40px;
 justify-content: space-between;
 
+
+}
+.movieCard{
+  max-width: 250px;
 }
 .movieRecommendations p{
   font-size: 30px;
@@ -53,7 +58,7 @@ margin-top: 110px !important;
   display: none;
 }
 iframe{
-  height: 300px !important;
+  height: 500px !important;
   width: 100% !important;
   
 }
@@ -342,4 +347,19 @@ text-align: justify;
   }
  
   
+}
+@media screen and (min-width: 1025px) {
+  .movieList2 {
+    width: 100%;
+    display: grid;
+  grid-template-columns: 250px auto auto auto auto;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+  
+  
+  }
+  .movieCard{
+    max-width: 250px;
+  }
 }
