@@ -6,6 +6,10 @@ function NavBar(){
     const home=()=>{
         navigate("/");
     }
+    const [query, setQuery] = useState("");
+    const search=()=>{
+        navigate(`/search/${query}`);
+    }
     const [isfocus,setIsFocus]=useState(false);
     return(
         <nav>
@@ -14,9 +18,9 @@ function NavBar(){
                 <p>MovieBox</p>
             </div>
             <div className="input-container">
-                <input type="text" placeholder="What do you want to watch?" onFocus={()=>setIsFocus(true)}/>
+                <input type="text" placeholder="What do you want to watch?" onFocus={()=>setIsFocus(true)} value={query} onChange={(e)=>setQuery(e.target.value)}/>
                 
-                <img src="/Icons/search.png" alt="" style={{ background: isfocus ? " #be123c" : "none", }}/>
+                <img src="/Icons/search.png" alt="" style={{ background: isfocus ? " #be123c" : "none", }} onClick={search}/>
             </div>
             
     </nav>

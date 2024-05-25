@@ -17,7 +17,6 @@ html{
   max-width: 100%;
  position: relative;
   margin: auto;
-  box-shadow: 0 0 0 3px gray;
 }
 .cover{
   max-width: 100%;
@@ -43,8 +42,6 @@ nav {
   justify-content: space-between;
   align-items: center;
   color: white;
-  position: absolute;
-  top: 0;
   background-color: #be123c;
 }
 .nav-left {
