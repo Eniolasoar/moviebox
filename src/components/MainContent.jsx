@@ -18,7 +18,6 @@ function MainContent(){
     const [movieNo2,setMovieNo2]=useState(12);
     const [loading2,setLoading2]=useState("true");
 
-
     const myStyle={
             textAlign: "center",
     width: "700px",

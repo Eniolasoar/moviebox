@@ -2,15 +2,11 @@ import { React, useEffect, useState, useRef } from "react";
 import "./Header.css";
 import NavBar from "./NavBar";
 import { Link, useNavigate } from "react-router-dom";
+import { useGlobalContext } from "../../GlobalProvider";
+function Header({ movieData }) {
 
-function Header() {
-  let API_KEY = "d6c287e55b74adf5812bec5fad23e8b0";
-  let url = "https://api.themoviedb.org/3/movie/popular?api_key=" + API_KEY;
+const {setLoaded}=useGlobalContext();
 
-  const [movieData, setData] = useState([]);
-  const [loading, setLoading] = useState("true");
-  const [error, setError] = useState(null);
-  const [urlset, setUrl] = useState(url);
 
   const [slideIndex, setSlideIndex] = useState(0);
   const [moviesToRemove, setMoviesToRemove] = useState(["653346", "1093995"]);
@@ -56,13 +52,6 @@ function Header() {
 
   let image_path = "https://image.tmdb.org/t/p/w500";
 
-  useEffect(() => {
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => setData(data.results))
-      .then((data) => setLoading("false"))
-      .catch((error) => setError(error.message));
-  }, [urlset]);
 
   const getFirstTwoSentences = (text) => {
     const sentences = text
@@ -94,6 +83,7 @@ function Header() {
                 src={image_path + movie.poster_path}
                 width={"100%"}
                 className="cover"
+                onLoad={setLoaded(true)}
               />
 
               <div className="slideInfo">

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import Header from './components/Header.jsx';
 import NavBar from './components/NavBar.jsx';
@@ -9,21 +9,15 @@ import MovieDetails from './components/MovieDetails.jsx';
 import Search from './components/Search.jsx';
 import Layout from './components/Layout.jsx';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import HomeLoader from './components/HomeLoader.jsx';
+import { useState } from 'react';
+import { GlobalProvider, useGlobalContext } from '../GlobalProvider';
 
-// Create a separate layout component for the home page
-const HomeLayout = () => (
-  <>
-    
-    <NavBar/>
-    <Header/>
-      <MainContent />
-      <Footer />
-  
-  </>
-);
+import { HomeLayout } from './components/HomeLayout.jsx';
 
 const App = () => {
   return (
+    <GlobalProvider>
     <Router>
       <Routes>
         <Route path="/" element={<HomeLayout />} />
@@ -33,6 +27,7 @@ const App = () => {
         <Route path='/search/:query' element={<Search />} />
       </Routes>
     </Router>
+    </GlobalProvider>
   );
 };
 

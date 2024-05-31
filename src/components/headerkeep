@@ -27,6 +27,13 @@ body, html {
   opacity: 0.7;
  
 }
+.movieContainer{
+  margin-top: 40px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
 nav {
  padding: 7px;
   display: flex;
