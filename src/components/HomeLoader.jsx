@@ -1,6 +1,6 @@
 import React from 'react';
 
-import  './Header.css';
+import  './HomeLoader.css';
 
 function HomeLoader() {
     return (
