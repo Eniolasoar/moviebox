@@ -40,7 +40,7 @@
 @media screen and (max-width:600px){
     .searchList {
         display: grid;
-        grid-template-columns: 370px !important;
+        grid-template-columns: 340px !important;
         gap: 40px;
 
         margin-top: 0.625rem;
