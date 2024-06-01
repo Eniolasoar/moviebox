@@ -1,131 +1,96 @@
-import { React, useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./Header.css";
-import NavBar from "./NavBar";
-import { Link, useNavigate } from "react-router-dom";
-import { useGlobalContext } from "../../GlobalProvider";
+import { useNavigate } from "react-router-dom";
+
 function Header({ movieData }) {
+  const [filteredMovies, setFilteredMovies] = useState([]);
+  const slideIndexRef = useRef(0);
 
-const {setLoaded}=useGlobalContext();
-
-
-  const [slideIndex, setSlideIndex] = useState(0);
-  const [moviesToRemove, setMoviesToRemove] = useState(["653346", "1093995"]);
-
-  // useEffect(()=>{
-  //     let i;
-  //     let slides=document.getElementsByClassName("mySlides");
-  //     for(i=0;i<slides.length;i++){
-  //         slides[i].style.display="none";
-  //     }
-  //     setSlideIndex((slideIndex)=>slideIndex+1);
-  //     if(slideIndex > slides.length){
-  //         setSlideIndex(1);
-  //     }
-  //     slides[slideIndex-1].style.display = "block";
-  //     setTimeout(showSlides, 2000);
-  // })
-  const timeoutRef = useRef(null);
   useEffect(() => {
-    if (movieData.length === 0) return;
+    if (!movieData.length) return;
+
+    const filteredData = movieData.filter(
+      (movie) => !["653346", "1093995"].includes(movie.id)
+    );
+    setFilteredMovies(filteredData.slice(10, 20)); // Pre-filter for efficiency
 
     const slideShow = () => {
-      let slides = document.getElementsByClassName("mySlides");
+      const slides = document.getElementsByClassName("mySlides");
+      if (slides.length === 0) return; // Ensure slides are available
+
       for (let i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
       }
-      setSlideIndex((prevIndex) => {
-        let nextIndex = prevIndex + 1;
-        if (nextIndex >= slides.length) {
-          nextIndex = 0;
-        }
-        slides[nextIndex].style.display = "block";
-        return nextIndex;
-      });
+      slides[slideIndexRef.current].style.display = "block"; // Direct manipulation
+
+      slideIndexRef.current = (slideIndexRef.current + 1) % slides.length;
     };
 
-    timeoutRef.current = setInterval(slideShow, 7000);
+    // Ensure DOM elements are rendered before calling slideShow
+    const timeoutId = setTimeout(() => {
+      slideShow(); // Show the first slide immediately
+      const intervalId = setInterval(slideShow, 7000);
 
-    return () => {
-      clearInterval(timeoutRef.current);
-    };
+      // Cleanup interval on unmount
+      return () => clearInterval(intervalId);
+    }, 0); // Execute after current call stack
+
+    return () => clearTimeout(timeoutId); // Cleanup timeout on unmount
   }, [movieData]);
 
-  let image_path = "https://image.tmdb.org/t/p/w500";
-
-
-  const getFirstTwoSentences = (text) => {
-    const sentences = text
-      .split(".")
-      .filter((sentence) => sentence.trim().length > 0);
-    const firstTwoSentences = sentences
-      .slice(0, 2)
-      .map((sentence) => sentence.trim() + ".");
-    return firstTwoSentences;
-  };
-  const filteredMovieData =
-    moviesToRemove.length > 0
-      ? movieData.filter((movie) => !moviesToRemove.includes(movie.id))
-      : movieData;
-
+  const image_path = "https://image.tmdb.org/t/p/w500";
   const navigate = useNavigate();
-  const goToMovie = (cardId) => {
-    navigate(`/movies/${cardId}`);
-  };
+
+  const goToMovie = (cardId) => navigate(`/movies/${cardId}`);
+
   return (
-    <>
-      <section className="header">
-        {filteredMovieData.slice(10, 20).map((movie, index) => {
-          const firstTwoSentences = getFirstTwoSentences(movie.overview);
+    <section className="header">
+      {filteredMovies.map((movie, index) => (
+        <div className="mySlides fade" key={index}>
+          <img
+            src={image_path + movie.poster_path}
+            width="100%"
+            className="cover"
+          />
 
-          return (
-            <div className="mySlides fade" key={index}>
-              <img
-                src={image_path + movie.poster_path}
-                width={"100%"}
-                className="cover"
-                onLoad={setLoaded(true)}
-              />
-
-              <div className="slideInfo">
-                <div className="text">
-                  <h1>{movie.title}</h1>
-                  <div className="rating">
-                    <div className="imdb2">
-                      <img src="/Icons/IMDB.png" alt="" />
-                      {movie.vote_average}/10
-                    </div>
-                    <div className="rottenTomatoes2">
-                      <img src="/Icons/tomato.png" alt="" />
-                      {Math.round(movie.vote_average * 10)}%
-                    </div>
-                  </div>
-                  <p className="paragraph"> {firstTwoSentences.join(" ")}</p>
-
-                  <button onClick={() => goToMovie(movie.id)}>
-                    <img src="/Icons/play.png" alt="" />
-
-                    <p>FULL DETAILS</p>
-                  </button>
+          <div className="slideInfo">
+            <div className="text">
+              <h1>{movie.title}</h1>
+              <div className="rating">
+                <div className="imdb2">
+                  <img src="/Icons/IMDB.png" alt="" />
+                  {movie.vote_average}/10
                 </div>
-
-                <div className="poster">
-                  <img
-                    src={image_path + movie.poster_path}
-                    className="posterImage"
-                  />
+                <div className="rottenTomatoes2">
+                  <img src="/Icons/tomato.png" alt="" />
+                {Math.round(movie.vote_average * 10)}%
                 </div>
               </div>
+              <p className="paragraph"> {movie.overview}</p>
 
-              <button onClick={() => goToMovie(movie.id)} className="mobileBtn">
+              <button onClick={() => goToMovie(movie.id)}>
                 <img src="/Icons/play.png" alt="" />
-
                 <p>FULL DETAILS</p>
               </button>
             </div>
-          );
-        })}
-      </section>
-    </>
+
+            <div className="poster">
+              <img
+                src={image_path + movie.poster_path}
+                className="posterImage"
+              />
+            </div>
+          </div>
+
+          <button onClick={() => goToMovie(movie.id)} className="mobileBtn">
+            <img src="/Icons/play.png" alt="" />
+            <p>FULL DETAILS</p>
+          </button>
+        </div>
+      ))}
+
+    </section>
   );
 }
+
 export default Header;

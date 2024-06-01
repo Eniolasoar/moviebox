@@ -38,10 +38,21 @@
     color:#be123c;
 }
 @media screen and (max-width:600px){
-   .searchList{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-   }
+    .searchList {
+        display: grid;
+        grid-template-columns: 370px !important;
+        gap: 40px;
+
+        margin-top: 0.625rem;
+        justify-items: center;
+        align-items:center;
+    }
+    .searchList .poster img:nth-child(1){
+        width:350px !important;
+        margin:auto;
+        width: 100% !important;
+    }
+    .searchList .movieCard{
+        max-width:350px !important;
+    }
 }
