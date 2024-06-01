@@ -276,6 +276,11 @@ text-align: justify;
   margin-top: 40px;
 }
 @media screen  and (max-width:600px){
+  iframe{
+    height: 300px !important;
+    width: 100% !important;
+    
+  }
   .extraInfo p{
     font-size: 13px !important;
   }
